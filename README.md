@@ -9,7 +9,7 @@
     Token intelligence • Wallet profiling • Narrative research • Real-time terminal • Credit-based execution
   </p>
 </div>
-
+[![Web App](https://img.shields.io/badge/Web%20App-000000?style=for-the-badge&logo=react&logoColor=white)](https://твоя-web-app-ссылка)
 <p align="center">
   <a href="https://app.akaripulse.com">
     <img alt="Web App" src="https://img.shields.io/badge/Web%20App-live-0f172a?style=for-the-badge&logo=googlechrome&logoColor=white" />
