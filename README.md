@@ -165,8 +165,8 @@ flowchart LR
 
 ## Disclaimer
 
-[!WARNING]
-AkariPulse provides analytics only
+> !WARNING]
+> AkariPulse provides analytics only
 
 - not financial advice
 - outputs may be inaccurate or incomplete
