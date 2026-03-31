@@ -42,11 +42,8 @@
 
 
 ---
-
-
-## Overview
-
-AkariPulse is an AI-native analytics and execution platform built for Solana traders and crypto users who want faster insight, clearer risk framing, and direct action from a single interface
+> [!IMPORTANT]
+> AkariPulse is an AI-native analytics and execution platform built for Solana traders and crypto users who want faster insight, clearer risk framing, and direct action from a single interface
 
 The platform combines:
 
@@ -66,7 +63,8 @@ AkariPulse is designed around a simple flow:
 
 Raw blockchain explorers show transactions
 
-AkariPulse turns on-chain and market data into structured decisions
+> [!TIP]
+> AkariPulse turns on-chain and market data into structured decisions
 
 Instead of jumping between dashboards, feeds, charts, wallets, and bots, users can work inside one product loop:
 
@@ -81,7 +79,9 @@ Instead of jumping between dashboards, feeds, charts, wallets, and bots, users c
 ## Product Surfaces
 
 ### Web App
-The primary interface for the full AkariPulse experience
+
+> [!IMPORTANT]
+> The primary interface for the full AkariPulse experience
 
 Includes:
 - Terminal
@@ -94,7 +94,9 @@ Includes:
 - Beta tools
 
 ### Telegram Mini App
-Fast, chat-like access to AkariPulse agents inside Telegram
+
+> [!TIP]
+> Fast, chat-like access to AkariPulse agents inside Telegram
 
 Best for:
 - quick token summaries
@@ -102,7 +104,9 @@ Best for:
 - narrative digests
 
 ### API
-Programmatic access for advanced users, tools, and partner integrations
+
+> [!NOTE]
+> Programmatic access for advanced users, tools, and partner integrations
 
 Best for:
 - custom dashboards
@@ -116,7 +120,8 @@ Best for:
 
 ## Token Analytics
 
-AI-generated token reports that turn raw data into a structured risk view
+> [!IMPORTANT]
+> AI-generated token reports that turn raw data into a structured risk view
 
 ### What it includes
 
@@ -150,7 +155,8 @@ AI-generated token reports that turn raw data into a structured risk view
 
 ## Wallet Analytics
 
-Wallet Analytics turns any supported wallet into a portfolio profile with labels, allocation analysis, and concentration insight
+> [!TIP]
+> Wallet Analytics turns any supported wallet into a portfolio profile with labels, allocation analysis, and concentration insight
 
 ### What it includes
 
@@ -182,7 +188,8 @@ Wallet Analytics turns any supported wallet into a portfolio profile with labels
 
 ## Narrative Radar
 
-Narrative Radar is an AI agent focused on news, social signals, and evolving market narratives
+> [!NOTE]
+> Narrative Radar is an AI agent focused on news, social signals, and evolving market narratives
 
 ### What it does
 
@@ -214,7 +221,8 @@ Narrative Radar is an AI agent focused on news, social signals, and evolving mar
 
 ## Terminal
 
-The Terminal is the real-time market layer inside AkariPulse
+> [!IMPORTANT]
+> The Terminal is the real-time market layer inside AkariPulse
 
 It allows users to monitor tokens, sort by momentum and volume, open analysis instantly, and execute swaps through Jupiter
 
@@ -252,7 +260,7 @@ It allows users to monitor tokens, sort by momentum and volume, open analysis in
 4. Swap via Jupiter
 5. Confirm in wallet
 
-> [!IMPORTANT]
+> [!CAUTION]
 > AkariPulse never takes custody of funds  
 > All swaps are executed on-chain through Jupiter with explicit wallet confirmation
 
@@ -260,7 +268,8 @@ It allows users to monitor tokens, sort by momentum and volume, open analysis in
 
 ## Token Design Beta
 
-Token Design is a simulation layer for exploring tokenomics before launch
+> [!WARNING]
+> Token Design is a simulation layer for exploring tokenomics before launch
 
 It does not deploy contracts  
 It does not predict price  
@@ -294,7 +303,8 @@ It helps teams reason about structure
 
 ## Burn Dashboard
 
-The Burn Dashboard gives transparent on-chain visibility into how `$AKARI` is burned and how treasury allocations move
+> [!IMPORTANT]
+> The Burn Dashboard gives transparent on-chain visibility into how `$AKARI` is burned and how treasury allocations move
 
 ### Dashboard focus
 
@@ -321,160 +331,4 @@ flowchart LR
     C --> D[AI engine processes on-chain and market data]
     D --> E[Structured report returned]
     E --> F[Open Terminal trade save or continue research]
-```
-
-## Session Lifecycle
-
-1. Authenticate with wallet  
-2. Use free credits or purchase more with $AKARI  
-3. Trigger an on-demand request  
-4. Receive structured output  
-5. Continue into deeper research or execution  
-
----
-
-## Credits & Plans
-
-AkariPulse uses a **usage-based credit model**
-
-Users spend credits only when they run actions
-
-### Example credit costs
-
-| Action | Credit Cost |
-|------|------:|
-| Token Analysis | 0.6 |
-| Wallet Analysis | 0.85 |
-| Narrative Digest | plan-defined |
-| Token Design Simulation | beta / plan-defined |
-
-### Plans
-
-| Plan | Monthly Price | Credits |
-|------|-------------:|--------:|
-| Free | $0 | 10 |
-| Lite | $9.99 | 30 |
-| Pro | $19.99 | 80 |
-| Max | $49.99 | 300 |
-
-### Plan logic
-
-- monthly renewal  
-- monthly credit pool  
-- shared usage across all official surfaces  
-- top-up or upgrade when balance is low  
-
----
-
-## $AKARI Utility
-
-$AKARI is the native utility token behind the platform credit flow
-
-### Core roles
-
-- payment asset for plans and credits  
-- access path for advanced features  
-- fee alignment and discount potential  
-- usage-linked token demand  
-
-### Purchase routing
-
-- **80%** of purchase flow is burned  
-- **20%** is routed to treasury  
-
-### Why this matters
-
-As platform usage grows, more spend can move through the same burn and treasury loop  
-
----
-
-## Product Loop
-
-AkariPulse is not built as isolated tools
-
-Each surface strengthens the next step
-
-### Typical flow
-
-1. Discover a token in the Terminal  
-2. Open Token Analytics  
-3. Review holders and risks  
-4. Jump into Wallet Analytics for major participants  
-5. Request a Narrative Radar digest  
-6. Return to the Terminal to act or skip  
-
-This creates a tighter research and execution cycle than using disconnected tools  
-
----
-
-## API & Integration
-
-AkariPulse exposes a JSON API for advanced users and integrations
-
-### Authentication
-
-All requests use a bearer key linked to a primary wallet
-
-```http
-Authorization: Bearer <AKARIPULSE_API_KEY>
-```
-Core endpoints
-POST /v1/analysis/token
-POST /v1/analysis/wallet
-POST /v1/analysis/narrative
-GET  /v1/analysis/:id
-GET  /v1/credits/balance
-GET  /v1/usage?from=2026-03-01&to=2026-03-04
-Example TypeScript client
-```ts
-import fetch from 'node-fetch'
-
-const API_KEY = process.env.AKARIPULSE_API_KEY!
-const API_URL = 'https://api.akaripulse.com'
-
-async function runTokenScan(tokenAddress: string) {
-  const res = await fetch(`${API_URL}/v1/analysis/token`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      tokenAddress,
-      surface: 'web'
-    })
-  })
-
-  const body = await res.json()
-
-  if (!body.ok) {
-    throw new Error(body.message || 'API error')
-  }
-
-  return body.data ?? body
-}
-```
-
-Example usage response
-```ts
-
-{
-  "ok": true,
-  "data": [
-    {
-      "ts": "2026-03-04T21:48:00Z",
-      "kind": "token",
-      "target": "So11111111111111111111111111111111111111112",
-      "surface": "web",
-      "creditsDelta": -0.6
-    },
-    {
-      "ts": "2026-03-04T21:50:10Z",
-      "kind": "wallet",
-      "target": "BsNjLfBhHn8hjyU9pWYV1T5v8j5Y9nj5U9pWYV1T5v8j",
-      "surface": "telegram",
-      "creditsDelta": -0.85
-    }
-  ]
-}****
 ```
