@@ -41,294 +41,121 @@
 [![Telegram Community](https://img.shields.io/badge/Telegram%20Community-Join-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/твоя_группа_или_канал)
 
 
----
+---## Overview
+
 > [!IMPORTANT]
-> AkariPulse is an AI-native analytics and execution platform built for Solana traders and crypto users who want faster insight, clearer risk framing, and direct action from a single interface
+> AkariPulse is an AI-native on-chain analytics and trading platform for Solana
 
-The platform combines:
-
-- on-demand token analytics
-- wallet intelligence
-- narrative research
-- a live trading terminal
-- credit-based access powered by `$AKARI`
-
-AkariPulse is designed around a simple flow:
-
-**Discover → Analyze → Decide → Trade or avoid**
+It provides structured intelligence and execution tools in one interface
 
 ---
 
-## Why AkariPulse
-
-Raw blockchain explorers show transactions
+## What It Does
 
 > [!TIP]
-> AkariPulse turns on-chain and market data into structured decisions
+> AkariPulse turns raw on-chain and market data into actionable insights
 
-Instead of jumping between dashboards, feeds, charts, wallets, and bots, users can work inside one product loop:
+Core capabilities:
 
-- find a token in the Terminal
-- open a token report
-- inspect holders and wallet behavior
-- request a narrative digest
-- swap via Jupiter when ready
+- AI-powered **Token Analytics** with unified risk scoring
+- **Wallet Analytics** with labels, allocation, and behavior insights
+- **Narrative Radar** for tracking market attention and sentiment
+- Real-time **Terminal** with integrated trading via Jupiter
+- Credit-based usage powered by `$AKARI`
+
+Instead of switching between tools, users operate inside one loop:
+
+**Discover → Analyze → Decide → Execute**
 
 ---
 
-## Product Surfaces
+## Live Preview / Screenshots
 
-### Web App
+> [!NOTE]
+> UI previews will be added here
+
+- Terminal view
+- Token analytics report
+- Wallet analytics dashboard
+- Narrative digest
+
+---
+
+## Key Features
+
+### Token Analytics
+- unified risk score (0–100)
+- contract + trading risk
+- liquidity and holder analysis
+- structured AI-generated reports
+
+### Wallet Analytics
+- wallet classification and labels
+- portfolio allocation breakdown
+- concentration and exposure metrics
+
+### Narrative Radar
+- AI-generated market narratives
+- token and sector-level digests
+- sentiment and attention tracking
+
+### Terminal
+- real-time token discovery
+- multiple market views
+- integrated swap via Jupiter
+
+---
+
+## Try It
 
 > [!IMPORTANT]
-> The primary interface for the full AkariPulse experience
+> Access AkariPulse via:
 
-Includes:
-- Terminal
-- Token Analytics
-- Wallet Analytics
-- Burn Dashboard
-- Profile
-- Plan & Billing
-- Usage logs
-- Beta tools
+- Web App → https://app.akaripulse.com  
+- API → https://api.akaripulse.com  
+- Telegram Mini App → (link)
 
-### Telegram Mini App
+### Quick Start
+
+1. Connect your wallet  
+2. Receive free credits  
+3. Run your first token or wallet analysis  
+4. Explore results and continue into Terminal  
+
+---
+
+## Integrations
+
+> [!NOTE]
+> AkariPulse connects with key Solana infrastructure
+
+- Jupiter (trading execution)
+- Solana wallets (non-custodial auth)
+- On-chain data providers
+- Internal AI analysis engine
+
+---
+
+## Tech Stack
 
 > [!TIP]
-> Fast, chat-like access to AkariPulse agents inside Telegram
+> High-level architecture overview
 
-Best for:
-- quick token summaries
-- wallet snapshots
-- narrative digests
-
-### API
-
-> [!NOTE]
-> Programmatic access for advanced users, tools, and partner integrations
-
-Best for:
-- custom dashboards
-- automations
-- internal workflows
-- analytics pipelines
+- Frontend: Web App + Telegram Mini App  
+- Backend: API + job queue system  
+- AI Layer: structured analysis engine  
+- Blockchain: Solana  
+- Execution: Jupiter integration  
 
 ---
 
-## Core Features
-
-## Token Analytics
-
-> [!IMPORTANT]
-> AI-generated token reports that turn raw data into a structured risk view
-
-### What it includes
-
-- unified risk score from `0` to `100`
-- contract risk and trading risk split
-- liquidity profile
-- holder distribution and concentration
-- price and volatility context
-- market structure commentary
-- practical interpretation for different trader profiles
-
-### Example report logic
-
-- **Final Risk Score** → overall risk framing
-- **Contract Risk** → ownership, mint or freeze state, LP lock or burn status, structural flags
-- **Trading Risk** → volatility, slippage, route depth, spread behavior, hostile execution conditions
-- **Holder Risk** → whale dominance, concentration, growth quality
-- **Bot Risk** → sandwich activity, bot presence, abnormal flow
-
-### Typical output
-
-- headline summary
-- key points
-- metric strip
-- price and liquidity breakdown
-- security assessment
-- community and market context
-- actionable interpretation block
-
----
-
-## Wallet Analytics
-
-> [!TIP]
-> Wallet Analytics turns any supported wallet into a portfolio profile with labels, allocation analysis, and concentration insight
-
-### What it includes
-
-- wallet classification
-- behavior labels
-- allocation by asset category
-- top holding concentration
-- average and max token risk
-- hedge quality assessment
-- practical commentary on structure and exposure
-
-### Example labels
-
-- `SOL Maxi`
-- `No Hedge`
-- `Bluechip Heavy`
-- `Meme Hunter`
-- `Small Retail`
-- `Whale`
-
-### Typical questions it answers
-
-- Is this wallet diversified or all-in
-- Does it behave like a degen, farmer, or directional holder
-- Is this structure worth copying or fading
-- Where is the real portfolio risk coming from
-
----
-
-## Narrative Radar
-
-> [!NOTE]
-> Narrative Radar is an AI agent focused on news, social signals, and evolving market narratives
-
-### What it does
-
-- clusters discussion into narratives
-- tracks attention intensity and direction
-- generates token-focused digests
-- generates sector or theme digests
-- adds context around why a token is being discussed right now
-
-### Query types
-
-- **Token-focused**
-  - example: `Give me a narrative summary for token X`
-- **Sector-focused**
-  - example: `Show me current narratives around Solana memes`
-
-### Digest structure
-
-- headline summary
-- key drivers
-- risk and caveats
-- practical takeaway
-
-> [!NOTE]
-> Narrative Radar reflects what is being talked about  
-> It does not predict what should happen next
-
----
-
-## Terminal
-
-> [!IMPORTANT]
-> The Terminal is the real-time market layer inside AkariPulse
-
-It allows users to monitor tokens, sort by momentum and volume, open analysis instantly, and execute swaps through Jupiter
-
-### Terminal includes
-
-- live token list
-- market views
-- timeframe switching
-- token detail drawer
-- quick actions for Analyze and Swap
-- market status and update visibility
-
-### Supported views
-
-- Trending
-- Volume
-- Top Performing
-- Graduating
-- Graduated
-
-### Supported timeframes
-
-- `5m`
-- `15m`
-- `30m`
-- `1h`
-- `4h`
-- `24h`
-
-### Execution flow
-
-1. Select a token
-2. Open token detail
-3. Run analysis if needed
-4. Swap via Jupiter
-5. Confirm in wallet
-
-> [!CAUTION]
-> AkariPulse never takes custody of funds  
-> All swaps are executed on-chain through Jupiter with explicit wallet confirmation
-
----
-
-## Token Design Beta
-
-> [!WARNING]
-> Token Design is a simulation layer for exploring tokenomics before launch
-
-It does not deploy contracts  
-It does not predict price  
-It helps teams reason about structure
-
-### It can model
-
-- total supply
-- allocations
-- vesting and unlock cliffs
-- emissions and rewards
-- burns and sinks
-- treasury policy
-- scenario branches
-
-### Scenario types
-
-- Base Case
-- Growth Case
-- Stress Case
-
-### Key outputs
-
-- circulating supply over time
-- allocation shifts
-- burn versus emissions
-- unlock calendar
-- structural warnings
-
----
-
-## Burn Dashboard
-
-> [!IMPORTANT]
-> The Burn Dashboard gives transparent on-chain visibility into how `$AKARI` is burned and how treasury allocations move
-
-### Dashboard focus
-
-- total `$AKARI` burned
-- burned value in USD
-- current circulating supply
-- treasury balance
-- recent burn events
-- burn and treasury charts over time
-
-### Why it exists
-
-Every credit purchase is tied to on-chain token routing  
-The dashboard acts like a public audit layer for that flow
-
----
-
-## How It Works
+## (Optional) How It Works
 
 ```mermaid
 flowchart LR
-    A[Connect wallet] --> B[Receive or buy credits]
-    B --> C[Run token wallet or narrative request]
-    C --> D[AI engine processes on-chain and market data]
-    D --> E[Structured report returned]
-    E --> F[Open Terminal trade save or continue research]
+    A[Connect wallet] --> B[Get credits]
+    B --> C[Run analysis]
+    C --> D[AI processes data]
+    D --> E[Structured output]
+    E --> F[Trade or continue research]
 ```
