@@ -41,7 +41,9 @@
 [![Telegram Community](https://img.shields.io/badge/Telegram%20Community-Join-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/твоя_группа_или_канал)
 
 
----## Overview
+---
+
+## Overview
 
 > [!IMPORTANT]
 > AkariPulse is an AI-native on-chain analytics and trading platform for Solana
