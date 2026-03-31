@@ -325,3 +325,311 @@ flowchart LR
     C --> D[AI engine processes on-chain and market data]
     D --> E[Structured report returned]
     E --> F[Open Terminal trade save or continue research]
+```
+
+Session lifecycle
+Authenticate with wallet
+Use free credits or purchase more with $AKARI
+Trigger an on-demand request
+Receive structured output
+Continue into deeper research or execution
+Credits & Plans
+
+AkariPulse uses a usage-based credit model
+
+Users spend credits only when they run actions
+
+Example credit costs
+Action	Credit Cost
+Token Analysis	0.6
+Wallet Analysis	0.85
+Narrative Digest	plan-defined
+Token Design Simulation	beta / plan-defined
+Plans
+Plan	Monthly Price	Credits
+Free	$0	10
+Lite	$9.99	30
+Pro	$19.99	80
+Max	$49.99	300
+Plan logic
+monthly renewal
+monthly credit pool
+shared usage across all official surfaces
+top-up or upgrade when balance is low
+$AKARI Utility
+
+$AKARI is the native utility token behind the platform credit flow
+
+Core roles
+payment asset for plans and credits
+access path for advanced features
+fee alignment and discount potential
+usage-linked token demand
+Purchase routing
+80% of purchase flow is burned
+20% is routed to treasury
+Why this matters
+
+As platform usage grows, more spend can move through the same burn and treasury loop
+
+Product Loop
+
+AkariPulse is not built as isolated tools
+
+Each surface strengthens the next step
+
+Typical flow
+Discover a token in the Terminal
+Open Token Analytics
+Review holders and risks
+Jump into Wallet Analytics for major participants
+Request a Narrative Radar digest
+Return to the Terminal to act or skip
+
+This creates a tighter research and execution cycle than using disconnected tools
+
+API & Integration
+
+AkariPulse exposes a JSON API for advanced users and integrations
+
+Authentication
+
+All requests use a bearer key linked to a primary wallet
+
+Authorization: Bearer <AKARIPULSE_API_KEY>
+Core endpoints
+POST /v1/analysis/token
+POST /v1/analysis/wallet
+POST /v1/analysis/narrative
+GET  /v1/analysis/:id
+GET  /v1/credits/balance
+GET  /v1/usage?from=2026-03-01&to=2026-03-04
+Example TypeScript client
+import fetch from 'node-fetch'
+
+const API_KEY = process.env.AKARIPULSE_API_KEY!
+const API_URL = 'https://api.akaripulse.com'
+
+async function runTokenScan(tokenAddress: string) {
+  const res = await fetch(`${API_URL}/v1/analysis/token`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      tokenAddress,
+      surface: 'web'
+    })
+  })
+
+  const body = await res.json()
+
+  if (!body.ok) {
+    throw new Error(body.message || 'API error')
+  }
+
+  return body.data ?? body
+}
+Example usage response
+{
+  "ok": true,
+  "data": [
+    {
+      "ts": "2026-03-04T21:48:00Z",
+      "kind": "token",
+      "target": "So11111111111111111111111111111111111111112",
+      "surface": "web",
+      "creditsDelta": -0.6
+    },
+    {
+      "ts": "2026-03-04T21:50:10Z",
+      "kind": "wallet",
+      "target": "BsNjLfBhHn8hjyU9pWYV1T5v8j5Y9nj5U9pWYV1T5v8j",
+      "surface": "telegram",
+      "creditsDelta": -0.85
+    }
+  ]
+}
+Internal Logic Snapshot
+Debit credits
+export interface DebitCreditsInput {
+  userWallet: string
+  action: CreditAction
+  amount: number
+}
+
+export async function debitCredits(input: DebitCreditsInput): Promise<void> {
+  const balance = await getCreditBalance(input.userWallet)
+
+  if (balance < input.amount) {
+    throw new Error('INSUFFICIENT_CREDITS')
+  }
+
+  await saveCreditMovement({
+    userWallet: input.userWallet,
+    delta: -input.amount,
+    action: input.action,
+    ts: new Date().toISOString()
+  })
+}
+Narrative digest run
+export async function runNarrativeDigest(
+  req: RunNarrativeDigestRequest
+): Promise<RunNarrativeDigestResponse> {
+  const creditCost = 1.0
+
+  await debitCredits({
+    userWallet: req.userWallet,
+    action: 'narrative_digest',
+    amount: creditCost
+  })
+
+  const digestId = await enqueueAnalysisJob({
+    kind: 'narrative',
+    userWallet: req.userWallet,
+    target: req.topic.type === 'token' ? req.topic.tokenAddress : req.topic.query,
+    surface: req.surface
+  })
+
+  return {
+    digestId,
+    status: 'queued',
+    creditCost
+  }
+}
+Plan purchase routing
+export interface AkariPlanPurchaseInput {
+  userWallet: string
+  planId: 'free' | 'lite' | 'pro' | 'max'
+  akariAmount: number
+  txHash: string
+}
+
+export interface AkariPlanPurchaseResult {
+  burnAmount: number
+  treasuryAmount: number
+}
+
+export function handleAkariPlanPurchase(
+  input: AkariPlanPurchaseInput
+): AkariPlanPurchaseResult {
+  const burnAmount = input.akariAmount * 0.8
+  const treasuryAmount = input.akariAmount * 0.2
+
+  recordAkariEvent({
+    kind: 'plan_purchase',
+    userWallet: input.userWallet,
+    planId: input.planId,
+    akariAmount: input.akariAmount,
+    burnAmount,
+    treasuryAmount,
+    txHash: input.txHash,
+    ts: new Date().toISOString()
+  })
+
+  applyPlanQuota(input.userWallet, input.planId)
+
+  return { burnAmount, treasuryAmount }
+}
+Security & Privacy
+
+[!IMPORTANT]
+AkariPulse is non-custodial
+We never request or store private keys or seed phrases
+
+What we do
+use standard Solana wallet connections
+keep user approvals inside the wallet
+log only what is needed for billing and product stability
+separate analytics from custody
+What we do not do
+store private keys
+store seed phrases
+move funds without explicit user confirmation
+act as a broker or asset manager
+Stored data
+wallet address used for authentication
+profile preferences
+usage logs for billing and analytics
+plan and credit state
+Not stored
+signing payloads
+private wallet material
+secret recovery phrases
+Risk & Model Limitations
+
+[!WARNING]
+AkariPulse provides analytics and tooling only
+It does not provide financial advice or guaranteed outcomes
+
+Important limits
+models are heuristic and statistical
+outputs can be incomplete, delayed, or wrong
+off-chain risks may not be visible
+narratives can be noisy or manipulated
+extreme market conditions can break assumptions
+User responsibility
+verify contracts and addresses independently
+never risk funds you cannot afford to lose
+use analytics as decision support, not certainty
+double-check execution details before trading
+Terms Summary
+
+By using AkariPulse, users acknowledge that:
+
+the product is informational and analytical
+all decisions remain with the user
+the platform is provided as is
+no outcome or uptime is guaranteed
+crypto markets are highly volatile and risky
+Example Navigation Structure
+Overview
+├── Burn Dashboard
+├── Terminal
+├── Token Analytics
+├── Wallet Analytics
+├── Narrative Radar
+├── Token Design Beta
+├── Profile
+├── Plan & Billing
+├── Usage
+├── API & Integration
+├── Security & Privacy
+├── Risk & Model Limitations
+└── Terms & Disclaimer
+Best Fit
+
+AkariPulse is built for:
+
+active Solana traders
+research-heavy degens
+wallets that need faster risk framing
+power users who want analytics and execution in one loop
+developers building custom integrations on top of a wallet-bound credit API
+Status
+Live now
+Token Analytics
+Wallet Analytics
+Terminal
+Burn Dashboard
+Web App
+Core billing and credits model
+Rolling out
+Narrative Radar
+Telegram Mini App
+expanded API usage
+Planned
+alerts and triggers
+strategy-linked execution
+autopilot modes with explicit risk controls
+extended integrations and developer surfaces
+Contact & Support
+Web App — https://app.akaripulse.com
+API — https://api.akaripulse.com
+Support — official support contact
+Community — official Telegram community
+Updates — official X account
+
+[!TIP]
+Never share private keys or seed phrases in public channels or support chats
