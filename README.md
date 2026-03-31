@@ -28,7 +28,7 @@
 
 ---
 
-### 🚀 Quick Links
+### Quick Links
 
 [![Web App](https://img.shields.io/badge/Web%20App-Open-3b82f6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://твоя-web-app-ссылка)
 
