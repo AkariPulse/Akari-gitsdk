@@ -48,6 +48,7 @@
 
 ---
 
+
 ## Overview
 
 AkariPulse is an AI-native analytics and execution platform built for Solana traders and crypto users who want faster insight, clearer risk framing, and direct action from a single interface
@@ -478,3 +479,86 @@ Example usage response
   ]
 }****
 ```
+
+
+
+Вот готовый README.md файл в виде Markdown-кода:
+Markdown# AkariPulse API
+
+Официальная документация и пример клиента для AkariPulse API.
+
+## Базовый URL
+https://api.akaripulse.com
+text## Авторизация
+
+Все запросы должны содержать заголовок:
+
+```http
+Authorization: Bearer YOUR_API_KEY
+Core Endpoints
+Анализ
+
+POST/v1/analysis/token — анализ токена
+POST/v1/analysis/wallet — анализ кошелька
+POST/v1/analysis/narrative — анализ нарратива
+GET/v1/analysis/:id — получение результатов анализа по ID
+
+Аккаунт и статистика
+
+GET/v1/credits/balance — проверка баланса кредитов
+GET/v1/usage?from=YYYY-MM-DD&to=YYYY-MM-DD — история использования (пример: ?from=2026-03-01&to=2026-03-04)
+
+Пример TypeScript клиента
+TypeScriptimport fetch from 'node-fetch';
+
+const API_KEY = process.env.AKARIPULSE_API_KEY!;
+const API_URL = 'https://api.akaripulse.com';
+
+async function runTokenScan(tokenAddress: string) {
+  const res = await fetch(`${API_URL}/v1/analysis/token`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      tokenAddress,
+      surface: 'web'
+    })
+  });
+
+  const body = await res.json();
+
+  if (!body.ok) {
+    throw new Error(body.message || 'API error');
+  }
+
+  return body.data ?? body;
+}
+Пример ответа
+JSON{
+  "ok": true,
+  "data": [
+    {
+      "ts": "2026-03-04T21:48:00Z",
+      "kind": "token",
+      "target": "So11111111111111111111111111111111111111112",
+      "surface": "web",
+      "creditsDelta": -0.6
+    },
+    {
+      "ts": "2026-03-04T21:50:10Z",
+      "kind": "wallet",
+      "target": "BsNjLfBhHn8hjyU9pWYV1T5v8j5Y9nj5U9pWYV1T5v8j",
+      "surface": "telegram",
+      "creditsDelta": -0.85
+    }
+  ]
+}
+Установка зависимостей
+Bashnpm install node-fetch
+Как использовать
+TypeScriptconst result = await runTokenScan("So11111111111111111111111111111111111111112");
+console.log(result);
+Готово! Просто скопируй весь текст выше и сохрани как README.md.
+textСкопируй всё от `# AkariPulse API` до конца и вставь в файл `README.md`.889мсБыстро
