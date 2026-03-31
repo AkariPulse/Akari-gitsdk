@@ -151,7 +151,7 @@ Instead of switching between tools, users operate inside one loop:
 
 ---
 
-## (Optional) How It Works
+## How It Works
 
 ```mermaid
 flowchart LR
@@ -161,3 +161,14 @@ flowchart LR
     D --> E[Structured output]
     E --> F[Trade or continue research]
 ```
+---
+
+## Disclaimer
+
+[!WARNING]
+AkariPulse provides analytics only
+
+- not financial advice
+- outputs may be inaccurate or incomplete
+- users are fully responsible for decisions
+- crypto markets are high risk
